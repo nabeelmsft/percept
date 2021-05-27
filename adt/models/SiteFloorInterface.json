@@ -1,0 +1,40 @@
+[
+    {
+        "@id": "dtmi:percept:DigitalTwins:SiteFloor;1",
+        "@type": "Interface",
+        "displayName": "Percept Site Floor - Interface Model",
+        "@context": "dtmi:dtdl:context;2",
+        "contents": [
+            {
+              "@type": "Property",
+              "name": "FloorId",
+              "schema": "string",
+              "writable": true
+            },
+            {
+              "@type": "Property",
+              "name": "FloorName",
+              "schema": "string",
+              "writable": true
+            },
+            {
+              "@type": ["Property", "Label"],
+              "name": "Label",
+              "schema": "string",
+              "writable": true
+            },
+            {
+              "@type": "Property",
+              "name": "Confidence",
+              "schema": "string",
+              "writable": true
+            },
+            {
+                "@type": "Property",
+                "name": "timestamp",
+                "schema": "string",
+                "writable": true
+              }
+          ]              
+    }
+]

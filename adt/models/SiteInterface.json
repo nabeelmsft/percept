@@ -31,6 +31,13 @@
         "name": "Tags",
         "schema": "string",
         "writable": true
+      },
+      {
+        "@type": "Relationship",
+        "@id": "dtmi:percept:DigitalTwins:Site:rel_has_floors;1",
+        "name": "rel_has_floors",
+        "displayName": "Has Floors",
+        "target": "dtmi:percept:DigitalTwins:SiteFloor;1"
       }
     ]
   }
