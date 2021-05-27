@@ -1,0 +1,36 @@
+{
+    "@id": "dtmi:percept:DigitalTwins:Site;1",
+    "@type": "Interface",
+    "displayName": "Percept Site - Interface Model",
+    "@context": "dtmi:dtdl:context;2",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "SiteId",
+        "schema": "string"
+      },
+      {
+        "@type": "Property",
+        "name": "SiteName",
+        "schema": "string",
+        "writable": true
+      },
+      {
+        "@type": "Property",
+        "name": "Country",
+        "schema": "string"
+      },
+      {
+        "@type": "Property",
+        "name": "ZipCode",
+        "schema": "string",
+        "writable": true
+      },
+      {
+        "@type": "Property",
+        "name": "Tags",
+        "schema": "string",
+        "writable": true
+      }
+    ]
+  }
