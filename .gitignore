@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/adt/apps/TwinInjestionFunctionApp/.vscode
+/adt/apps/TwinInjestionFunctionApp/Properties/PublishProfiles
+/adt/apps/TwinIngestionFunctionApp/.vscode
+/adt/apps/TwinIngestionFunctionApp/Properties/PublishProfiles
