@@ -23,7 +23,7 @@ In this post we will see how easy it is to consume device data from Azure IoT Hu
 ### Function code
 
 ```csharp
-namespace TwinInjestionFunctionApp
+namespace TwinIngestionFunctionApp
 {
     using Azure;
     using Azure.Core.Pipeline;
