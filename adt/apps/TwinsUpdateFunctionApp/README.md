@@ -1,3 +1,28 @@
+# Consuming device data from Azure IoT Hub by Azure Digital Twins
+
+## Overview
+
+In this post we will see how easy it is to consume device data from Azure IoT Hub by Azure Digital Twins.
+
+## Data Flow
+
+![Data Flow](./images/dataingestionflow.png "Data Flow")
+
+## Prerequisites
+
+- Azure Subcription
+- Admin Access to Azure AD Tenant & Azure Subscription
+- Mac OS: [PowerShell for Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6 )
+- Windows OS: PowerShell is built-in
+- Azure Digital Twin Instance. Get host address of Azure Digital Twin instance's as ADT_SERVICE_URL App setting for the Azure Function App.
+- Device connected to Azure IoT Hub. Get the Event Hub-compatible endpoint from the Built-in endpoints from the Azure IoT Hub.
+
+
+## Connecting Azure IoT Hub with Azure Digital Twin
+
+### Function code
+
+```csharp
 namespace TwinsUpdateFunctionApp
 {
     using System;
@@ -74,3 +99,13 @@ namespace TwinsUpdateFunctionApp
         }
     }
 }
+
+```
+
+Here is how data looks like on Azure Digital Twin Explore:
+
+![Data Flow](./images/azuredigitaltwinexplorer.PNG "Data Flow")
+
+## Conclusion
+
+Using Azure.DigitalTwins.Core library we can create data flow pipeline to Azure Digital Twin.
