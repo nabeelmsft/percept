@@ -55,7 +55,6 @@ namespace TwinIngestionFunctionApp
                     //Authenticate with Digital Twins
                     ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
                     DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                    //log.LogInformation($"ADT service client connection created.");
                     if (message != null && message.Body != null)
                     {
                         log.LogInformation(Encoding.UTF8.GetString(message.Body.Array));

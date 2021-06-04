@@ -18,6 +18,31 @@ Imagine that you represent a company that manages facilities for various confere
 
 ## Setup
 
+### Azure Percept Setup
+
+#### Data coming from Azure Percept
+
+```json
+{
+  "body": {
+    "NEURAL_NETWORK": [
+      {
+        "bbox": [
+          0.32,
+          0.084,
+          0.636,
+          1
+        ],
+        "label": "person",
+        "confidence": "0.889648",
+        "timestamp": "1622658821393258467"
+      }
+    ]
+  },
+  "enqueuedTime": "2021-06-02T18:33:41.866Z"
+}
+```
+
 ### Azure Digital Twin Setup
 
 Azure Digital Twin setup is divided into two distinct parts. The first part is the Azure Digital Twin Instance setup which is common for any Azure Digital Twin setup. The second part deals with the set up of model. This will be different for each case. In our case we would need to have a model that have two components. One component of the model will be the site where the exhibition is taking place. The second component is of the model is floor which is assigned to a particular exhibition participant.
