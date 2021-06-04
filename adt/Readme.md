@@ -6,7 +6,7 @@ Imagine that you represent a company that manages facilities for various confere
 
 ## Architecture
 
-![Data Flow](./images/overall-dataflow.PNG "Data Flow")
+![Data Flow](./images/overall-dataflow.png "Data Flow")
 
 ## Prerequisites
 
