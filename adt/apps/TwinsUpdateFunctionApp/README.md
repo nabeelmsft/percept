@@ -1,12 +1,12 @@
-# Consuming device data from Azure IoT Hub by Azure Digital Twins
+# Consuming Azure Digital Twins data updates using Event Hub and Function App
 
 ## Overview
 
-In this post we will see how easy it is to consume device data from Azure IoT Hub by Azure Digital Twins.
+In this post we will see how easy it is to consume Azure Digital Twin data from Azure IoT Hub by Azure Digital Twins.
 
 ## Data Flow
 
-![Data Flow](./images/dataingestionflow.png "Data Flow")
+![Data Flow](./images/twins-update-data-flow.png "Data Flow")
 
 ## Prerequisites
 
@@ -18,7 +18,9 @@ In this post we will see how easy it is to consume device data from Azure IoT Hu
 - Device connected to Azure IoT Hub. Get the Event Hub-compatible endpoint from the Built-in endpoints from the Azure IoT Hub.
 
 
-## Connecting Azure IoT Hub with Azure Digital Twin
+## Reading Azure Digital Twin updates
+
+### Azure Digital Twin setup for routing messages to event hub.
 
 ### Function code
 
