@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this post we will see how easy it is to consume Azure Digital Twin data from Azure IoT Hub by Azure Digital Twins.
+In this post we will see how easy it is to consume Azure Digital Twin data using Azure Function through Azure Event Hubs.
 
 ## Data Flow
 
