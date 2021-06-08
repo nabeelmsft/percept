@@ -17,10 +17,19 @@ In this post we will see how easy it is to consume Azure Digital Twin data using
 - Azure Digital Twin Instance. Get host address of Azure Digital Twin instance's as ADT_SERVICE_URL App setting for the Azure Function App.
 - Device connected to Azure IoT Hub. Get the Event Hub-compatible endpoint from the Built-in endpoints from the Azure IoT Hub.
 
-
 ## Reading Azure Digital Twin updates
 
-### Azure Digital Twin setup for routing messages to event hub.
+### Azure Digital Twin setup for routing events to event hub
+
+Routing events from Azure Digital Twin to Azure Event hub is a two step process.
+
+#### Create Azure Digital Twin Endpoint
+
+![Create endpoint](./images/twins-update-create-endpoint.png "Create endpoint")
+
+#### Create Azure Digital Twin Event Route
+
+![Create event route](./images/twins-update-create-eventroute.png "Create event route")
 
 ### Function code
 
@@ -104,10 +113,15 @@ namespace TwinsUpdateFunctionApp
 
 ```
 
-Here is how data looks like on Azure Digital Twin Explore:
+Let us take a look at the code.
 
-![Data Flow](./images/azuredigitaltwinexplorer.PNG "Data Flow")
+- The flow starts when event hub triggers this function. 
+- On the trigger we get a list of events. 
+- For each event date (part of events list), we are reading the message body.
+- Each message body is deserialized to get jToken for each data field.
+
+The Twins Update Function App stops the flow there to create a open for bridging with other down stream systems. One example could be a frontend platform that shows the Azure Digital Twin updates data on a view.
 
 ## Conclusion
 
-Using Azure.DigitalTwins.Core library we can create data flow pipeline to Azure Digital Twin.
+Using Azure Event Hub and event routing we can route Azure Digital twin events and telemetry to any downstream system.
