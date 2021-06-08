@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this post we will see how easy it is to consume Azure Digital Twin data using Azure Function through Azure Event Hubs.
+In this post we will see how easy it is to consume Azure Digital Twin data using Azure Function through Azure Event Hubs. Once the Azure Digital Twin is getting data from IoT devices through Azure IoT Hub, the flow is to read that data in form of Azure Digital Twin graph representation. This post addresses how to read Azure Digital Twin data for the down stream systems.
 
 ## Data Flow
 
@@ -14,8 +14,8 @@ In this post we will see how easy it is to consume Azure Digital Twin data using
 - Admin Access to Azure AD Tenant & Azure Subscription
 - Mac OS: [PowerShell for Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6 )
 - Windows OS: PowerShell is built-in
-- Azure Digital Twin Instance. Get host address of Azure Digital Twin instance's as ADT_SERVICE_URL App setting for the Azure Function App.
-- Device connected to Azure IoT Hub. Get the Event Hub-compatible endpoint from the Built-in endpoints from the Azure IoT Hub.
+- Azure Digital Twin Instance. The assumption is that the Azure Digital Twin is getting data from IoT device through Azure IoT Hub.
+
 
 ## Reading Azure Digital Twin updates
 
@@ -115,8 +115,8 @@ namespace TwinsUpdateFunctionApp
 
 Let us take a look at the code.
 
-- The flow starts when event hub triggers this function. 
-- On the trigger we get a list of events. 
+- The flow starts when event hub triggers this function.
+- On the trigger we get a list of events.
 - For each event date (part of events list), we are reading the message body.
 - Each message body is deserialized to get jToken for each data field.
 
