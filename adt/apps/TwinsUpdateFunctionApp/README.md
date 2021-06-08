@@ -14,7 +14,7 @@ In this post we will see how easy it is to consume Azure Digital Twin data using
 - Admin Access to Azure AD Tenant & Azure Subscription
 - Mac OS: [PowerShell for Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6 )
 - Windows OS: PowerShell is built-in
-- Azure Digital Twin Instance. The assumption is that the Azure Digital Twin is getting data from IoT device through Azure IoT Hub.
+- Azure Digital Twin Instance. The assumption is that the Azure Digital Twin is getting data from IoT device through Azure IoT Hub. For details how you can set up Azure Digital Twin with Azure IoTHub visit [Azure Digital Twins update](https://github.com/nabeelmsft/percept/tree/main/adt/apps/TwinIngestionFunctionApp)
 
 
 ## Reading Azure Digital Twin updates
