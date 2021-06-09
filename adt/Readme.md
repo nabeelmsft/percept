@@ -10,6 +10,13 @@ Imagine that you represent a company that manages facilities for various confere
 
 ![Data Flow](./images/overall-dataflow.png "Data Flow")
 
+The main components for the architecture include:
+
+- Azure Percept device that is setup to run AI on the Edge.
+- Azure Digital Twins instance with Model deployed.
+- Azure Event Hub setup to receive Azure Digital Twin events/updates.
+- Two Azure Functions that provide the role of bridge for the Azure Percept data flow to Azure Digital Twins instance and another Azure Function that is listening to Azure Event Hubs for reading Azure Digital Twin updates.
+
 ## Prerequisites
 
 - Azure Subcription
