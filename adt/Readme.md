@@ -4,6 +4,8 @@
 
 Imagine that you represent a company that manages facilities for various conferences and exhibitions. Part of your job is to ensure that products exhibited by participants ( or customers) are being displayed at right location assigned to the participant. For that what you need is a view of the facilities but at the same time real time intelligence on the products that are being exhibited.
 
+ In this post we will see how Azure Percept can be used to provide the real time intelligence along with Azure Digital Twins to digitally represent real-world entities such as places, devices and people.
+
 ## Architecture
 
 ![Data Flow](./images/overall-dataflow.png "Data Flow")
@@ -14,11 +16,16 @@ Imagine that you represent a company that manages facilities for various confere
 - Admin Access to Azure AD Tenant & Azure Subscription
 - Mac OS: [PowerShell for Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6 )
 - Windows OS: PowerShell is built-in
-- 
+- Azure Percept connected to IoT Hub and working as AI on edge device.
 
 ## Setup
 
 ### Azure Percept Setup
+
+For this post we are using Azure Percept device. You can use any device (edge device or leaf device) that is connected to Azure IoTHub and sending messages to Azure IoTHub.
+
+For reference on how to setup Azure Percept running AI: 
+[Create a no-code vision solution in Azure Percept](https://docs.microsoft.com/en-us/azure/azure-percept/tutorial-nocode-vision)
 
 #### Data coming from Azure Percept
 
@@ -108,7 +115,6 @@ Here is how the model will look like once it is created on Azure Digital Twin us
 
 ![Twins Ingestion Function App](./images/twins-ingestion-function-app.png "Twins Ingestion Function App]")
 
-
 ```csharp
 namespace TwinIngestionFunctionApp
 {
@@ -178,10 +184,17 @@ Details mentioned at: [TwinsIngestionFunctionApp](https://github.com/nabeelmsft/
 #### Setting up Azure Digital Twin to push messages to Event Hub
 
 1. Create EventHub Namespace
-1. Create event hub
-1. Create event hub route
-1. Update Azure Digital Twin to route message to event hub
+2. Create event hub
+3. Create event hub route
+4. Update Azure Digital Twin to route message to event hub
 
+##### Creating Azure Digital Twin Endpoint
+
+![Create endpoint](./images/twins-update-create-endpoint.png "Create endpoint")
+
+##### Creating Azure Digital Twin Event Route
+
+![Create event route](./images/twins-update-create-eventroute.png "Create event route")
 
 #### Twins Update App
 
@@ -266,3 +279,8 @@ namespace TwinsUpdateFunctionApp
 }
 
 ```
+Details mentioned at: [TwinsUpdateFunctionApp](https://github.com/nabeelmsft/percept/tree/main/adt/apps/TwinUpdateFunctionApp)
+
+## Conclusion
+
+Using Azure Event Hub and event routing we can route Azure Digital twin events and telemetry to any downstream system.
