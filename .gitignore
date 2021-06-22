@@ -139,3 +139,9 @@ dmypy.json
 /adt/apps/TwinIngestionBetaFunctionApp/Properties
 /adt/apps/TwinIngestionFunctionApp/Properties/ServiceDependencies
 /adt/apps/TwinIngestionFunctionApp/Properties
+/adt/apps/TwinsUpdateBetaFunctionApp/.vscode
+/adt/apps/TwinsUpdateBetaFunctionApp/Properties/PublishProfiles
+/adt/apps/TwinsUpdateBetaFunctionApp/Properties/ServiceDependencies/TwinsUpdateBetaFunction - Zip Deploy
+/adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.TwinsUpdateBetaFunction - Zip Deploy.json
+/adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.local.json
+/adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.json
