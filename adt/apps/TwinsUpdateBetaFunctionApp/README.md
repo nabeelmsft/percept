@@ -133,66 +133,67 @@ If Visual Studio is being used to developing the Azure Function then prerelease 
 Here is how the code looks like:
 
 ```csharp
-namespace TwinsUpdateFunctionApp
+namespace TwinsUpdateBetaFunctionApp
 {
+    using Azure.Messaging.EventHubs;
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+    using System.Text.Json;
     using System.Threading.Tasks;
-    using Microsoft.Azure.EventHubs;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using TwinsUpdateFunctionApp.model;
+    using TwinsUpdateBetaFunctionApp.model;
 
-    public static class TwinsUpdateFunction
+    public static class TwinsUpdateBetaFunction
     {
-        [FunctionName("TwinsUpdateFunction")]
-        public static async Task Run([EventHubTrigger("santacruz3203-digitaltwin-eventhub", Connection = "EventHubConnectionString")] EventData[] events, ILogger log)
+        [FunctionName("TwinsUpdateBetaFunction")]
+        public static async Task Run([EventHubTrigger("santacruz3203-digitaltwin-eventhub", Connection = "EventHubConnection")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
             List<TwinUpdate> twinUpdates = new List<TwinUpdate>();
+
             foreach (EventData eventData in events)
             {
                 try
                 {
-                    string messageBody = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
-                    JObject twinMessage = (JObject)JsonConvert.DeserializeObject(messageBody);
-                    if (twinMessage["patch"] != null)
+                    JsonElement twinMessage = JsonSerializer.Deserialize<JsonElement>(eventData.EventBody.ToString());
+                    var patch = twinMessage.GetProperty("patch");
+                    if (!string.IsNullOrEmpty(twinMessage.GetProperty("patch").ToString()))
                     {
                         TwinUpdate twinUpdate = new TwinUpdate();
-                        twinUpdate.ModelId = twinMessage["modelId"].ToString();
-                        foreach (JToken jToken in twinMessage["patch"])
+                        twinUpdate.ModelId = twinMessage.GetProperty("modelId").ToString();
+                        foreach (JsonElement patchItem in twinMessage.GetProperty("patch").EnumerateArray())
                         {
-                            if (jToken["path"].ToString().Equals("/FloorId", StringComparison.InvariantCultureIgnoreCase))
+                            if (patchItem.GetProperty("path").ToString().Equals("/FloorId", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Floor = jToken["value"].ToString();
+                                twinUpdate.Floor = patchItem.GetProperty("value").ToString();
                             }
-                            if (jToken["path"].ToString().Equals("/FloorName", StringComparison.InvariantCultureIgnoreCase))
+
+                            if (patchItem.GetProperty("path").ToString().Equals("/FloorName", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.FloorName = jToken["value"].ToString();
+                                twinUpdate.FloorName = patchItem.GetProperty("value").ToString();
                             }
-                            if (jToken["path"].ToString().Equals("/Label", StringComparison.InvariantCultureIgnoreCase))
+
+                            if (patchItem.GetProperty("path").ToString().Equals("/Label", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Label = jToken["value"].ToString();
+                                twinUpdate.Label = patchItem.GetProperty("value").ToString();
                             }
-                            if (jToken["path"].ToString().Equals("/Confidence", StringComparison.InvariantCultureIgnoreCase))
+
+                            if (patchItem.GetProperty("path").ToString().Equals("/Confidence", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Confidence = jToken["value"].ToString();
+                                twinUpdate.Confidence = patchItem.GetProperty("value").ToString();
                             }
-                            if (jToken["path"].ToString().Equals("/timestamp", StringComparison.InvariantCultureIgnoreCase))
+
+                            if (patchItem.GetProperty("path").ToString().Equals("/timestamp", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Timestamp = jToken["value"].ToString();
+                                twinUpdate.Timestamp = patchItem.GetProperty("value").ToString();
                             }
                         }
 
                         twinUpdates.Add(twinUpdate);
                     }
-                    // Add any custom logic to process data.
-                    log.LogInformation($"Message received: {messageBody}");
-                    
+                    log.LogInformation($"Message received: {eventData.EventBody}");
                     await Task.Yield();
                 }
                 catch (Exception e)
@@ -209,6 +210,7 @@ namespace TwinsUpdateFunctionApp
         }
     }
 }
+
 
 ```
 
