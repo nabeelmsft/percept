@@ -2,7 +2,7 @@
 
 ## Overview
 
-The beta version for Storage, Event Hubs, Service Bus, and Event Grid Functions extensions make it possible to use secretless configuration via Azure Active Directory. Azure SDKs are adding capabilities enabling users to leverage Azure Cloud as platform to the fullest. Secretless configuration is one of the Azure platform capabilities that eliminate the responsibility of managing and maintaining secrets for various services. Leveraging secretless configuration capability reminds of using gravity to your advantage.
+The beta version for Storage, Event Hubs, Service Bus, and Event Grid Functions extensions make it possible to use secretless configuration via Azure Active Directory. Azure SDKs are adding capabilities enabling users to leverage Azure Cloud as platform to the fullest. Secretless configuration is one of the Azure platform capabilities that eliminate the responsibility of managing and maintaining secrets for various services. Leveraging secretless configuration capability reminds of using gravity to your advantage. You can use configuration that has secrets but that brings the responsibility to maintain and manage secrets in picture. Like gravity, it is good to leverage native platform capability of Azure. Now with Azure SDK's Azure Function Extension Libraries (Beta) we can build truly secretless systems.
 
 In this post we will see how easy it is to consume Azure Digital Twins data using secretless Azure Function through Azure Event Hubs. Once the Azure Digital Twins is set up for getting data from IoT devices through Azure IoT Hub, the flow is to read that data in form of Azure Digital Twins graph representation. This post addresses how to read Azure Digital Twins data for the down stream systems using secretless configuration feature of Azure Function Extension Libraries(Beta).
 
@@ -32,13 +32,15 @@ Routing events from Azure Digital Twins to Azure Event hub is a simple two step 
 
 ### Create Azure Digital Twins Endpoint
 
+Following image illustrates how to create azure Digital Twins Endpoint:
+
 ![Create endpoint](./images/twins-update-create-endpoint.png "Create endpoint")
 
 ### Create Azure Digital Twins Event Route
 
+Following image illustrates how to create Azure Digital Twins Event Route:
+
 ![Create event route](./images/twins-update-create-eventroute.png "Create event route")
-
-
 
 ## Set up Azure Function App to process Event Hub Trigger
 
@@ -119,6 +121,16 @@ Following image illustrates the above mentioned steps:
 ![Add role assignment for Azure Function in Event Hub instance](./images/identity-settings.png "Add role assignment for Azure Function in Event Hub instance")
 
 ## Add code to Azure Function App
+
+From code perspective, nothing changes when using secretless configuration. The Azure Function code will be written exactly th3e same way as for configuration with secrets. So if you have already written Azure Function having configuration with secrets, then  you would not need to change anything on actual code. The only change will be on the configuration side. This has already mentioned under the section "Set up Azure Function App to process Event Hub Trigger".
+
+Besides the configuration we have to ensure we are using the Azure Function Extension Libraries(Beta). For this the prerelease version of "Microsoft Azure WebJobs SDK EventHubs Extension" NuGet package should be added to Azure Function project.
+
+If Visual Studio is being used to developing the Azure Function then prerelease version of "Microsoft Azure WebJobs SDK EventHubs Extension" library should be added to Azure Function project as shown below:
+
+![Package setup](./images/package-setup.png "Package setup")
+
+Here is how the code looks like:
 
 ```csharp
 namespace TwinsUpdateFunctionApp
@@ -211,4 +223,4 @@ The Twins Update Function App stops the flow there to create a open for bridging
 
 ## Conclusion
 
-Using Azure Event Hub and event routing we can route Azure Digital Twins events and telemetry to any downstream system.
+Azure SDK is adding capabilities to allow secretless configuration implementation. This is huge in terms of management of secrets. With Azure Function Extension Libraries(Beta) cloud architectures can be designed that leverage Azure AD for authentication without the need of maintaining secrets. This post shows that we can implement an IoT system with secretless configuration as an example demonstrating the secretless configuration capability.
