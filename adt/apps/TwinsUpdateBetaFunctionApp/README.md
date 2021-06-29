@@ -18,13 +18,13 @@ Here is what we are going to do:
 
 ## Prerequisites
 
-- Azure Subcription
+- Azure Subscription
 - Admin Access to Azure AD Tenant & Azure Subscription
 - Mac OS: [PowerShell for Mac](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6 )
 - Windows OS: PowerShell is built-in
 - Azure Digital Twins Instance. The assumption is that the Azure Digital Twins is getting data from IoT device through Azure IoT Hub. For details how you can set up Azure Digital Twins with Azure IoTHub visit [Azure Digital Twins update](https://github.com/nabeelmsft/percept/tree/main/adt/apps/TwinIngestionFunctionApp).
 - Azure Event Hub instance. For details on how to create Azure Event Hub visit [Create an event hub using Azure portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). Make sure to retrieve the fully qualified namespace for the event hub. We will be using that in subsequent sections.
-- Azure Function App. This will be designated app that will run with any secrets using secretless configuration. In this post we will configure this Azure Function App to enable secretless configuration.
+- Azure Function App. This will be the designated app that will run without any secrets using secretless configuration. In this post we will configure this Azure Function App to enable secretless configuration.
 
 ## Set up Azure Digital Twins to route events to event hub
 
@@ -52,7 +52,7 @@ To enable secretless configuration we will use Azure Active Directory to authent
 
 Here are the steps:
 
-1. Login to [Azure Portal](https://portal.azure.com/) and navigate to your Azure Funcation App that was mentioned in the prerequisite section.
+1. Login to [Azure Portal](https://portal.azure.com/) and navigate to your Azure Function App that was mentioned in the prerequisite section.
 2. On the left navigation menu click "Identity".
 3. On the "System assigned" tab, select "On" toggle button under "Status" heading.
 4. Click "Save".
