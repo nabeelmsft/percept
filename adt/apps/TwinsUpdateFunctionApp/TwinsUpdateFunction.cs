@@ -58,7 +58,8 @@ namespace TwinsUpdateFunctionApp
                         using (HttpClient httpClient = new HttpClient())
                         {
                             var requestURl = new Uri($"{twinReceiverUrl}?label={twinUpdate.Label}&confidence={twinUpdate.Confidence}&timestamp={twinUpdate.Timestamp}&floorId={twinUpdate.Floor}&floorName={twinUpdate.FloorName}");
-                            var response = httpClient.GetAsync(requestURl).Result;
+                            StringContent queryString = new StringContent(messageBody);
+                            var response = httpClient.PostAsync(requestURl, queryString).Result;
                         }
 
                         twinUpdates.Add(twinUpdate);

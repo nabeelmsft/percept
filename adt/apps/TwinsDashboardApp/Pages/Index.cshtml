@@ -1,27 +1,31 @@
 ﻿@page
-    <div class="row">
-        <div class="col-12">
-            <hr />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <ul id="messagesList"></ul>
-        </div>
-    </div>
+<table>
+    <tr>
+        <td>
     <div class ="row">
         <div class="col-6" id="modelId" style="border: 5px solid gray; background-repeat: no-repeat; background-size: 400px 485px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Intelligent_building_system-diagram.png/640px-Intelligent_building_system-diagram.png);">
-            <div id="floorIdId"style="border: 5px solid yellow; margin:1px; background-color:gray;"></div>
-            <div id="floorNameId" style="margin:10px;">
+            <div id="floorIdId"style=""></div>
+            <div id="floorNameId" style="">
                 
             </div>
             <div id="labelId" style="margin:200px;">
                 
             </div>
-            <div id="confidenceId" style="margin:1px; background-color:gray;">
+            <div id="confidenceId" style="">
                 
             </div>                
         </div>
-    </div> 
+    </div>
+    <div style="margin-top:20px;">
+        Azure Digital Twins Updates
+    </div>
+    <div>
+        <textarea id="messageArea" cols="200" style="height: 200px; width: 800px;"></textarea>
+    </div>
+</td>
+<td>
+</td>
+    </tr>
+</table>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/dashboard.js"></script>
