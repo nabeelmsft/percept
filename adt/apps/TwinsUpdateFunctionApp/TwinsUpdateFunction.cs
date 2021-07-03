@@ -3,6 +3,7 @@ namespace TwinsUpdateFunctionApp
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.Azure.EventHubs;
@@ -14,6 +15,7 @@ namespace TwinsUpdateFunctionApp
 
     public static class TwinsUpdateFunction
     {
+        private static readonly string twinReceiverUrl = Environment.GetEnvironmentVariable("TWINS_RECEIVER_URL");
         [FunctionName("TwinsUpdateFunction")]
         public static async Task Run([EventHubTrigger("santacruz3203-digitaltwin-eventhub", Connection = "EventHubConnectionString")] EventData[] events, ILogger log)
         {
@@ -53,8 +55,15 @@ namespace TwinsUpdateFunctionApp
                             }
                         }
 
+                        using (HttpClient httpClient = new HttpClient())
+                        {
+                            var requestURl = new Uri($"{twinReceiverUrl}?label={twinUpdate.Label}&confidence={twinUpdate.Confidence}&timestamp={twinUpdate.Timestamp}&floorId={twinUpdate.Floor}&floorName={twinUpdate.FloorName}");
+                            var response = httpClient.GetAsync(requestURl).Result;
+                        }
+
                         twinUpdates.Add(twinUpdate);
                     }
+                    
                     // Add any custom logic to process data.
                     log.LogInformation($"Message received: {messageBody}");
                     

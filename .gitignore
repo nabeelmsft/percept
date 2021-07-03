@@ -145,3 +145,6 @@ dmypy.json
 /adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.TwinsUpdateBetaFunction - Zip Deploy.json
 /adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.local.json
 /adt/apps/TwinsUpdateBetaFunctionApp/Properties/serviceDependencies.json
+/adt/apps/TwinsDashboardApp/.vs/TwinsDashboardApp
+/adt/apps/TwinsDashboardApp/bin/Debug/netcoreapp3.1
+/adt/apps/TwinsDashboardApp/obj
