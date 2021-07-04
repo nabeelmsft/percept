@@ -1,31 +1,31 @@
 ﻿@page
-<table>
-    <tr>
-        <td>
+
     <div class ="row">
-        <div class="col-6" id="modelId" style="border: 5px solid gray; background-repeat: no-repeat; background-size: 400px 485px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Intelligent_building_system-diagram.png/640px-Intelligent_building_system-diagram.png);">
-            <div id="floorIdId"style=""></div>
-            <div id="floorNameId" style="">
+        <div id="modelId" style="width: 400px; border: 2px solid gray; background-repeat: no-repeat; background-size: 400px 485px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Intelligent_building_system-diagram.png/640px-Intelligent_building_system-diagram.png);">
+            <div id="floorIdId"style="font-weight: bold;"></div>
+            <div id="floorNameId" style="font-weight: bold;">
                 
             </div>
-            <div id="labelId" style="margin:200px;">
+            <div id="labelId" style="margin-top:200px; margin-left: 10px; margin-bottom: 200px; width: 100px;">
                 
             </div>
-            <div id="confidenceId" style="">
+            <div id="confidenceId" style="font-weight: bold;">
                 
             </div>                
         </div>
+    <div style="height: 500px; width: 600px;background-image: url(/images/dataflow.png); background-repeat: no-repeat;">
+        
+    </div>
+
     </div>
     <div style="margin-top:20px;">
         Azure Digital Twins Updates
     </div>
     <div>
-        <textarea id="messageArea" cols="200" style="height: 200px; width: 800px;"></textarea>
+        <textarea id="messageArea" cols="200" style="height: 200px; width: 1000px;"></textarea>
     </div>
-</td>
-<td>
-</td>
-    </tr>
-</table>
+    
+
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/dashboard.js"></script>
