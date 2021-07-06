@@ -1,12 +1,6 @@
 ﻿@page
-@using Microsoft.AspNetCore.Antiforgery
 @model TwinsDashboardApp.Pages.TwinReceiverModel
 @{
-}
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@inject IAntiforgery antiforgery
-@{
-    var token = antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
 }
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/receiver.js"></script>
