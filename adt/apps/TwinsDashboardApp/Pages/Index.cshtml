@@ -1,25 +1,22 @@
 ﻿@page
 
+    <div style="margin-top:20px; font-weight: bold;">
+        Data visualization through Azure Digital Twins updates
+    </div>
     <div class ="row">
-        <div id="modelId" style="width: 400px; border: 2px solid gray; background-repeat: no-repeat; background-size: 400px 485px; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Intelligent_building_system-diagram.png/640px-Intelligent_building_system-diagram.png);">
-            <div id="floorIdId"style="font-weight: bold;"></div>
-            <div id="floorNameId" style="font-weight: bold;">
-                
-            </div>
-            <div id="labelId" style="margin-top:200px; margin-left: 10px; margin-bottom: 200px; width: 100px;">
-                
-            </div>
-            <div id="confidenceId" style="font-weight: bold;">
-                
-            </div>                
+        <div id="modelId" class="twins">
+            <div id="floorIdId"></div>
+            <div id="floorNameId"></div>
+            <div id="labelId" style="margin-top:200px; margin-left: 120px; margin-bottom: 200px; width: 100px;"></div>
+            <div id="confidenceId"></div>                
         </div>
-    <div style="height: 500px; width: 600px;background-image: url(/images/dataflow.png); background-repeat: no-repeat;">
+    <div style="display: none; height: 500px; width: 600px;background-image: url(/images/dataflow.png); background-repeat: no-repeat;">
         
     </div>
 
     </div>
-    <div style="margin-top:20px;">
-        Azure Digital Twins Updates
+    <div style="margin-top:20px; font-weight: bold;">
+        Raw Azure Digital Twins Updates
     </div>
     <div>
         <textarea id="messageArea" cols="200" style="height: 200px; width: 1000px;"></textarea>

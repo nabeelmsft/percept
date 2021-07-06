@@ -65,9 +65,6 @@ namespace TwinsUpdateFunctionApp
                         twinUpdates.Add(twinUpdate);
                     }
                     
-                    // Add any custom logic to process data.
-                    log.LogInformation($"Message received: {messageBody}");
-                    
                     await Task.Yield();
                 }
                 catch (Exception e)
