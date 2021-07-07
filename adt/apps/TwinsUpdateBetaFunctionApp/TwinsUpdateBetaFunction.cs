@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TwinsUpdateBetaFunctionApp.model;
+using TwinsUpdateBetaFunctionApp.Model;
 
 namespace TwinsUpdateBetaFunctionApp
 {
