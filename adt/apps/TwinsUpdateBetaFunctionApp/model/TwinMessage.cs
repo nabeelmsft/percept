@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TwinsUpdateBetaFunctionApp.model
+namespace TwinsUpdateBetaFunctionApp.Model
 {
     public class TwinMessage
     {

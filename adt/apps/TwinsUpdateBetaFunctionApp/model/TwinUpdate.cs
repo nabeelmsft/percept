@@ -1,4 +1,4 @@
-﻿namespace TwinsUpdateBetaFunctionApp.model
+﻿namespace TwinsUpdateBetaFunctionApp.Model
 {
     public class TwinUpdate
     {

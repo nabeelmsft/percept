@@ -1,15 +1,14 @@
+using Azure.Messaging.EventHubs;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TwinsUpdateBetaFunctionApp.model;
+
 namespace TwinsUpdateBetaFunctionApp
 {
-    using Azure.Messaging.EventHubs;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Extensions.Logging;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.Json;
-    using System.Threading.Tasks;
-    using TwinsUpdateBetaFunctionApp.model;
-
     public static class TwinsUpdateBetaFunction
     {
         [FunctionName("TwinsUpdateBetaFunction")]
