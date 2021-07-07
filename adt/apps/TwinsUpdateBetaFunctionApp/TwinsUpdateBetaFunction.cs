@@ -22,37 +22,36 @@ namespace TwinsUpdateBetaFunctionApp
             {
                 try
                 {
-                    JsonElement twinMessage = JsonSerializer.Deserialize<JsonElement>(eventData.EventBody.ToString());
-                    var patch = twinMessage.GetProperty("patch");
-                    if (!string.IsNullOrEmpty(twinMessage.GetProperty("patch").ToString()))
+                    TwinMessage twinMessage = eventData.EventBody.ToObjectFromJson<TwinMessage>();
+                    if (twinMessage.patch != null)
                     {
                         TwinUpdate twinUpdate = new TwinUpdate();
-                        twinUpdate.ModelId = twinMessage.GetProperty("modelId").ToString();
-                        foreach (JsonElement patchItem in twinMessage.GetProperty("patch").EnumerateArray())
+                        twinUpdate.ModelId = twinMessage.modelId;
+                        foreach (Patch patchItem in twinMessage.patch)
                         {
-                            if (patchItem.GetProperty("path").ToString().Equals("/FloorId", StringComparison.InvariantCultureIgnoreCase))
+                            if(patchItem.path.Equals("/FloorId", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Floor = patchItem.GetProperty("value").ToString();
+                                twinUpdate.Floor = patchItem.value;
                             }
 
-                            if (patchItem.GetProperty("path").ToString().Equals("/FloorName", StringComparison.InvariantCultureIgnoreCase))
+                            if (patchItem.path.Equals("/FloorName", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.FloorName = patchItem.GetProperty("value").ToString();
+                                twinUpdate.FloorName = patchItem.value;
                             }
 
-                            if (patchItem.GetProperty("path").ToString().Equals("/Label", StringComparison.InvariantCultureIgnoreCase))
+                            if (patchItem.path.Equals("/Label", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Label = patchItem.GetProperty("value").ToString();
+                                twinUpdate.Label = patchItem.value;
                             }
 
-                            if (patchItem.GetProperty("path").ToString().Equals("/Confidence", StringComparison.InvariantCultureIgnoreCase))
+                            if (patchItem.path.Equals("/Confidence", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Confidence = patchItem.GetProperty("value").ToString();
+                                twinUpdate.Confidence = patchItem.value;
                             }
 
-                            if (patchItem.GetProperty("path").ToString().Equals("/timestamp", StringComparison.InvariantCultureIgnoreCase))
+                            if (patchItem.path.Equals("/timestamp", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                twinUpdate.Timestamp = patchItem.GetProperty("value").ToString();
+                                twinUpdate.Timestamp = patchItem.value;
                             }
                         }
 
