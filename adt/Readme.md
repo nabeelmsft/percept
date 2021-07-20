@@ -290,4 +290,4 @@ Details mentioned at: [TwinsUpdateFunctionApp](https://github.com/nabeelmsft/per
 
 ## Conclusion
 
-Using Azure Event Hub and event routing we can route Azure Digital twin events and telemetry to any downstream system.
+Azure Percept and Azure Digital Twins are two distinct Azure services that are built to provide unique values. In this post we have seen how real-time AI on Azure Percept can be combined with real-word digital representation of Azure Digital Twins to derive data visualization using real-time intelligence.
